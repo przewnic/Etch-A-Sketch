@@ -1,0 +1,74 @@
+html, body {
+    margin: 0px;
+    min-height: 100vh;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+header {
+    background-color: rgb(241, 189, 189);
+    text-align: center;
+}
+
+footer {
+    background-color: lightgray;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+#sketchpad {
+    height: 600px;
+    width: 600px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.controls {
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content:space-evenly;
+    width: 600px;
+}
+
+button {
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color:lightgray;
+}
+
+
+.content p {
+    font-family: 'Teko', sans-serif;
+    padding: 2px;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
