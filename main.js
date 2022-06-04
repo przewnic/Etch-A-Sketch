@@ -1,11 +1,16 @@
 const sketchpadParent = document.querySelector("#sketchpad");
 const nrSquares = document.querySelector("#numberSquares");
 const clearButton = document.querySelector("#clearButton");
-let pad = [];  // how to clear array
+const colors = document.querySelector("#colors");
+const colorInput = document.querySelector("#colorInput");
+let pad = [];
+let colorType = colors.value;
 
 clearButton.addEventListener("click", clearPad);
 nrSquares.addEventListener("change", createPad);
 sketchpadParent.addEventListener("mouseover", addColor, false)
+colors.addEventListener("change", changeColors);
+
 
 function getNrSquares() {
     return nrSquares.value;
@@ -38,8 +43,24 @@ function createPad() {
 }
 
 function addColor(event) {
-    event.target.style.backgroundColor = "blue";
+    if (colorType == "multi") {
+        let r = Math.floor(Math.random()*256);
+        let g = Math.floor(Math.random()*256);
+        let b = Math.floor(Math.random()*256);
+        event.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+    else if (colorType == "one") {
+        event.target.style.backgroundColor = colorInput.value;
+    }
+
     sketchpadParent.style.backgroundColor = "white";
+}
+
+function changeColors(event) {
+    colorType = "one";
+    if (event.target.value == "multi") {
+        colorType = "multi";
+    }
 }
 
 createPad();

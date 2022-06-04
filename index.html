@@ -21,6 +21,19 @@
                 <p>Clear the pad: <button id="clearButton">Clear</button></p>
                 <p>Number of squares: <input type="range" id="numberSquares" min="10" max="50" value="24"></p>
             </div>
+            <div class="controls">
+                <p>
+                    <label for="colors">Colors: </label>
+                    <select name="colors" id="colors">
+                        <option value="one">One color</option>
+                        <option value="multi">Multicolor</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="colorInput">Choose one color: </label>
+                    <input type="color" id="colorInput" name="colorInput" value="#0000ff">
+                </p>
+            </div>
             <p><i class="arrow down"></i> Draw Here <i class="arrow down"></i></p>
             <div id="sketchpad"></div>
         </div>
