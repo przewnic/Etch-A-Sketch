@@ -8,3 +8,4 @@ Created page with sketchpad
 - Size of the grid can be adjusted with range input.
 - Sketchpad can be cleared anytime with Clear button.
 
+Try it out <a href="https://przewnic.github.io/Etch-A-Sketch/">here</a>!
