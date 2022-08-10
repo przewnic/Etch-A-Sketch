@@ -1,13 +1,13 @@
 html, body {
     margin: 0px;
-    min-height: 100vh;
 }
 
 .page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: stretch;
+    min-height: 100vh;
 }
 
 .content {
