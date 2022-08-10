@@ -12,12 +12,13 @@ clearButton.addEventListener("click", clearPad);
 nrSquares.addEventListener("change", createPad);
 sketchpadParent.addEventListener("mouseover", addColor, false);
 sketchpadParent.addEventListener("mousedown",activateDrawing);
-sketchpadParent.addEventListener("mouseup", deactivateDrawing);
+document.addEventListener("mouseup", deactivateDrawing);
 colors.addEventListener("change", changeColors);
 
 
-function activateDrawing () {
+function activateDrawing (event) {
     colorActive=true;
+    addColor(event);
 }
 
 function deactivateDrawing () {
