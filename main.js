@@ -3,14 +3,26 @@ const nrSquares = document.querySelector("#numberSquares");
 const clearButton = document.querySelector("#clearButton");
 const colors = document.querySelector("#colors");
 const colorInput = document.querySelector("#colorInput");
+const padBackgroundColor = "rgb(255, 255, 255)";
+let colorActive = false;
 let pad = [];
 let colorType = colors.value;
 
 clearButton.addEventListener("click", clearPad);
 nrSquares.addEventListener("change", createPad);
-sketchpadParent.addEventListener("mouseover", addColor, false)
+sketchpadParent.addEventListener("mouseover", addColor, false);
+sketchpadParent.addEventListener("mousedown",activateDrawing);
+sketchpadParent.addEventListener("mouseup", deactivateDrawing);
 colors.addEventListener("change", changeColors);
 
+
+function activateDrawing () {
+    colorActive=true;
+}
+
+function deactivateDrawing () {
+    colorActive=false;
+}
 
 function getNrSquares() {
     return nrSquares.value;
@@ -18,7 +30,7 @@ function getNrSquares() {
 
 function clearPad() {
     for (let square of pad) {
-        square.style.backgroundColor = "rgb(241, 189, 189)";
+        square.style.backgroundColor = padBackgroundColor;
     }
 }
 
@@ -33,27 +45,28 @@ function createPad() {
     removeSquares();
     for (let i=0; i< getNrSquares()**2; i++) {
         let newSquare = document.createElement("div");
-        newSquare.style.backgroundColor = "rgb(241, 189, 189)";
+        newSquare.style.backgroundColor = padBackgroundColor;
         newSquare.style.height = String(sketchpadParent.clientHeight/getNrSquares()) + "px";
         newSquare.style.width = String(sketchpadParent.clientWidth/getNrSquares()) + "px";
         pad.push(newSquare);
         sketchpadParent.appendChild(newSquare);
     }
-    console.log(getNrSquares());
 }
 
 function addColor(event) {
-    if (colorType == "multi") {
-        let r = Math.floor(Math.random()*256);
-        let g = Math.floor(Math.random()*256);
-        let b = Math.floor(Math.random()*256);
-        event.target.style.backgroundColor = `rgb(${r},${g},${b})`;
-    }
-    else if (colorType == "one") {
-        event.target.style.backgroundColor = colorInput.value;
-    }
+    if (colorActive) {
+        if (colorType == "multi") {
+            let r = Math.floor(Math.random()*256);
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            event.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+        }
+        else if (colorType == "one") {
+            event.target.style.backgroundColor = colorInput.value;
+        }
 
-    sketchpadParent.style.backgroundColor = "white";
+        sketchpadParent.style.backgroundColor = "white";
+    }
 }
 
 function changeColors(event) {
